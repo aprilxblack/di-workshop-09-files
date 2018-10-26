@@ -50,8 +50,12 @@ console.log(fileContents)
 
 Before you run the code, read it carefully. **What do you think it’ll do?**
 
+I think it'll print out the contents of names.txt
+
 Run the code in your terminal with `node part-1.js`. **What happened? Was it
 what you expected?**
+
+Uhm no, a list of weird numbers appeared
 
 You’ll probably find that you get something with the word ‘`Buffer`’ and a bunch
 of weird letters and numbers. These are the bytes from our file, the raw data
@@ -69,8 +73,11 @@ Run your code and see what the difference is. So some research to answer these
 questions:
 
 - **What does utf-8 mean**
+It's a unicode standard, preferred encoding for e-mail and web pages, 1 character is 1 to 4 bytes long.
 - **Why does adding it change what our code does?**
+Because it tells our program how it should interpret the text from the file (as a plain text, not as a bunch of number as the computer sees it)
 - Extra: **what other things could we try adding instead of `utf-8`?**
+'utf-16' I guess
 
 Now, `readFileSync` should be returning a _string_ containing the contents of
 our file.
@@ -129,9 +136,13 @@ In this exercise, we’re going to be working with JSON. Do some research and
 answer the following questions:
 
 - **What is JSON?**
+It stands for 'JavaScript Object Notation' and it's a lightweight data interchange format, that it's easy for humans to read and write, and for machines to parse and generate. 
 - **What’s it used for?**
+It's used for data interchange
 - **What does it look like?**
+It's basically a collection of name/value pairs (kinda like an object in js) or an ordered list of values (array/list in most languages). It's written in that way so that other languages are happy with it
 - **Where have we seen it before?**
+package.json
 
 Take a look at `shopping-basket.json` and familiarise yourself with it's
 contents. This is JSON data for a shopping cart. It is an object with one
@@ -144,6 +155,7 @@ part 1.**
 
 The data is still a string - before we can work with it as objects & arrays, we
 need to _parse_ it. Do some research: **what does parsing mean?**
+Taking input from a string and returning some other data type
 
 Replace your console.log with lines of code like this:
 
@@ -153,8 +165,10 @@ console.log(data)
 ```
 
 **What do you think will change?**
+Probably something will appear on the screen because nothing did before
 
 Run the code. **What changed? Why?**
+I got an actual array printed on the screen, probably because I parsed
 
 We can _loop_ over each item in the basket with the following code:
 
@@ -165,8 +179,10 @@ for (var item of data.basket) {
 ```
 
 **How does this loop work?**
+It logs the item names onto a console
 
 **What happens when we change basket in the code? Why?**
+Different things are getting logged onto a console, because our programme is taking input from the file
 
 Modify your program so that it prints out the quantity and total cost (price ×
 quantity) of each item. **Check your answers against this tweet:**
@@ -176,7 +192,7 @@ quantity) of each item. **Check your answers against this tweet:**
 Have your program calculate and print the total cost of the shopping basket.
 
 The opposite of parsing - turning structured data back into a string - doesn’t
-really have a name. JavaScript (and a few other languages) use `stringify`.
+really have a name. JavaScript (and a few other languages) use `stringify`. (lol it sounds like Harry Potter spell)
 
 This code will convert a JavaScript object into a JSON string:
 
